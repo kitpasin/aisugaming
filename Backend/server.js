@@ -14,7 +14,6 @@ const connection = mysql.createConnection({
   password: "",
   database: "aisugaming",
 });
-
 connection.connect((error) => {
   if (error) {
     console.log("Error connecting to database = ", error);
@@ -23,8 +22,8 @@ connection.connect((error) => {
   console.log("Database connected successfully!");
 });
 
-// Create route
-app.post("/create", async (request, response) => {
+// Create user route
+app.post("/user/create", async (request, response) => {
   const { email, username, password } = request.body;
   try {
     connection.query(
@@ -46,9 +45,8 @@ app.post("/create", async (request, response) => {
   }
 });
 
-// Read route
-// Get all data
-app.get("/read", async (request, response) => {
+// Read user route
+app.get("/users/read", async (request, response) => {
   try {
     connection.query("SELECT * FROM users", (error, results, fields) => {
       if (error) {
@@ -62,8 +60,7 @@ app.get("/read", async (request, response) => {
     return response.status(500).send();
   }
 });
-// Get data by id
-app.get("/read/:id", async (request, response) => {
+app.get("/user/read/:id", async (request, response) => {
   const id = request.params.id;
   try {
     connection.query(
@@ -83,8 +80,8 @@ app.get("/read/:id", async (request, response) => {
   }
 });
 
-// Update route
-app.patch("/update/:id", async (request, response) => {
+// Update user route
+app.patch("/user/update/:id", async (request, response) => {
   const id = request.params.id;
   const newEmail = request.body.newEmail;
   const newUsername = request.body.newUsername;
@@ -123,8 +120,8 @@ app.patch("/update/:id", async (request, response) => {
   }
 });
 
-// Delete route
-app.delete("/delete/:id", async (request, response) => {
+// Delete user route
+app.delete("/user/delete/:id", async (request, response) => {
   const id = request.params.id;
   try {
     connection.query(
@@ -143,6 +140,64 @@ app.delete("/delete/:id", async (request, response) => {
         return response
           .status(200)
           .json({ message: "User deleted successfully!" });
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    return response.status(500).send();
+  }
+});
+
+// Create game route
+app.post("/game/create", async (request, response) => {
+  const { image, title, url } = request.body;
+  try {
+    connection.query(
+      "INSERT INTO games(image, title, description) VALUE(?, ?, ?)",
+      [`/upload/${image}`, title, url],
+      (error, results, fields) => {
+        if (error) {
+          console.log("Error while inserting a game into the database", error);
+          return response.status(400).send();
+        }
+        return response
+          .status(201)
+          .json({ message: "New game created successfully!" });
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    return response.status(500).send();
+  }
+})
+
+// Read game route
+app.get("/games/read", async (request, response) => {
+  try {
+    connection.query("SELECT * FROM games", (error, results, fields) => {
+      if (error) {
+        console.log("Error while reading the database", error);
+        return response.status(400).send();
+      }
+      return response.status(200).json(results);
+    });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).send();
+  }
+});
+app.get("/game/read/:id", async (request, response) => {
+  const id = request.params.id;
+  try {
+    connection.query(
+      "SELECT * FROM games WHERE id = ?",
+      [id],
+      (error, results, fields) => {
+        if (error) {
+          console.log("Error while reading the database", error);
+          return response.status(400).send();
+        }
+        return response.status(200).json(results);
       }
     );
   } catch (error) {
