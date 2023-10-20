@@ -12,7 +12,7 @@ export const SidebarMenu = [
     },
     {
         id: 2,
-        title: "Tier list",
+        title: "Tier List",
         icon: <MilitaryTechRoundedIcon />,
         url: "/honkai-star-rail/tier-list"
     },

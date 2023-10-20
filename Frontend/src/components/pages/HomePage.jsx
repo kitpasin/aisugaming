@@ -6,7 +6,7 @@ function HomePage({ games, setBgImg }) {
     <div className="w-full h-full overflow-y-auto">
       <Header />
       <div className="w-full max-w-[1280px] m-auto p-8 text-white text-xl font-bold">
-        <p>All games</p>
+        <p>Select your game</p>
         <div className="grid grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
           {games.map((game) => (
             <Link
@@ -17,8 +17,8 @@ function HomePage({ games, setBgImg }) {
             >
               <figure className="rounded-md overflow-hidden">
                 <img
-                  className="rounded-md cursor-pointer hover:scale-125 transition-all ease-in-out duration-300"
-                  src={`images/${game.image}`}
+                  className="rounded-md cursor-pointer hover:scale-125 transition-all ease-in-out duration-500"
+                  src={`images/games/${game.image}`}
                   alt={game.title}
                 />
               </figure>

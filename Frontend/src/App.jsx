@@ -37,7 +37,7 @@ function App() {
             <div
               key={game.id}
               style={{
-                backgroundImage: `linear-gradient(0deg, transparent 0%, #161616), linear-gradient(180deg, transparent 0%, #161616), url(/images/${game.image})`,
+                backgroundImage: `linear-gradient(0deg, transparent 0%, #161616), linear-gradient(180deg, transparent 0%, #161616), url(/images/games/${game.image})`,
               }}
               className={`absolute top-0 bg-cover bg-center ${
                 bgImg === game.image ? "opacity-1" : "opacity-0"

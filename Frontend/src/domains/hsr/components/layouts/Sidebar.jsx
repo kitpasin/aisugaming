@@ -24,7 +24,7 @@ function Sidebar({ isSidebarOpen, games, domain, bgImg }) {
 
   return (
     <div
-      className={`relative bg-[#1c1d21] w-full ${
+      className={`relative bg-[#1c1d21] flex-none w-full ${
         isSidebarOpen ? "max-w-[250px]" : "max-w-[70px]"
       } border-[#33343a] border-r-[1px] h-screen text-white text-xl font-bold overflow-hidden transition-all ease-in-out duration-300`}
     >
@@ -40,7 +40,7 @@ function Sidebar({ isSidebarOpen, games, domain, bgImg }) {
       </Link>
       <figure
         style={{
-          backgroundImage: `linear-gradient(270deg, transparent 0%, #161616), linear-gradient(90deg, transparent 50%, #161616), url(/images/${bgImg})`,
+          backgroundImage: `linear-gradient(270deg, transparent 0%, #161616), linear-gradient(90deg, transparent 50%, #161616), url(/images/games/${bgImg})`,
         }}
         className="relative w-full h-full max-h-[70px] bg-cover bg-center flex justify-between items-center gap-4 px-4"
       >
@@ -82,7 +82,7 @@ function Sidebar({ isSidebarOpen, games, domain, bgImg }) {
               <div
                 key={game.id}
                 style={{
-                  backgroundImage: `linear-gradient(0deg, transparent 0%, #161616), linear-gradient(180deg, transparent 0%, #161616), url(/images/${game.image})`,
+                  backgroundImage: `linear-gradient(0deg, transparent 0%, #161616), linear-gradient(180deg, transparent 0%, #161616), url(/images/games/${game.image})`,
                 }}
                 className={`absolute top-0 left-0 bg-cover bg-center ${
                   gamesModalBgImg === game.image ? "opacity-1" : "opacity-0"
@@ -108,7 +108,7 @@ function Sidebar({ isSidebarOpen, games, domain, bgImg }) {
                   <figure className="rounded-md overflow-hidden">
                     <img
                       className="rounded-md cursor-pointer hover:scale-125 transition-all ease-in-out duration-300"
-                      src={`/images/${game.image}`}
+                      src={`/images/games/${game.image}`}
                       alt={game.title}
                     />
                   </figure>
@@ -127,7 +127,7 @@ function Sidebar({ isSidebarOpen, games, domain, bgImg }) {
             className={`relative w-full h-[60px] ${
               isSidebarOpen
                 ? "text-[18px] transition-all ease-in duration-300"
-                : "text-[0px] transition-all ease-out duration-100 pl-[21px]"
+                : "text-[0px] transition-all ease-out duration-100 pl-[23px]"
             } flex items-center gap-4 p-4`}
           >
             {menu.icon}
