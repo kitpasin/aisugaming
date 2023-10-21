@@ -28,7 +28,17 @@ router.post("/character/create", async (request, response) => {
   try {
     connection.query(
       "INSERT INTO characters(image, name, detail, url, star_id, element_id, path_id, skill_id, eidolon_id) VALUE(?, ?, ?, ?, ?, ?, ?, ?, ?)",
-      [image, name, detail, url, star_id, element_id, path_id, skill_id, eidolon_id],
+      [
+        image,
+        name,
+        detail,
+        url,
+        star_id,
+        element_id,
+        path_id,
+        skill_id,
+        eidolon_id,
+      ],
       (error, results, fields) => {
         if (error) {
           console.log(
@@ -69,7 +79,7 @@ router.get("/character/read/:id", async (request, response) => {
   const id = request.params.id;
   try {
     connection.query(
-      "SELECT * FROM characters WHERE id = ?",
+      "SELECT c.*, c.image AS character_image, e.image AS element_image, e.name AS element_name, p.image AS path_image, p.name AS path_name, b.*, bs.* FROM characters c INNER JOIN stars s ON c.star_id = s.id INNER JOIN elements e ON c.element_id = e.id INNER JOIN paths p ON c.path_id = p.id INNER JOIN basics b ON c.skill_id = b.skill_id INNER JOIN basic_levels bs ON b.level_id = bs.level_id WHERE c.url = ?",
       [id],
       (error, results, fields) => {
         if (error) {
@@ -128,7 +138,7 @@ router.patch("/character/update/:id", async (request, response) => {
             path_id,
             skill_id,
             eidolon_id,
-            id
+            id,
           ],
           (error, results, fields) => {
             if (error) {

@@ -10,7 +10,6 @@ import CharacterDetailPage from "./components/pages/CharacterDetailPage";
 function Index({ games, domain, bgImg }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth || 0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [selectedCharacter, setSelectedCharacter] = useState(0)
 
   function handleResize() {
     setWindowWidth(window.innerWidth);
@@ -43,12 +42,13 @@ function Index({ games, domain, bgImg }) {
         <Header
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
+          windowWidth={windowWidth}
         />
         <Routes>
           <Route path="/" element={<HomePage domain={domain} />} />
           <Route path="/tier-list" element={<TierListPage />} />
-          <Route path="/characters" element={<CharactersPage domain={domain} setSelectedCharacter={setSelectedCharacter} />} />
-          <Route path="/characters/*" element={<CharacterDetailPage selectedCharacter={selectedCharacter} />} />
+          <Route path="/characters" element={<CharactersPage domain={domain} />} />
+          <Route path="/characters/*" element={<CharacterDetailPage domain={domain} />} />
         </Routes>
         
       </div>

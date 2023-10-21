@@ -4,7 +4,7 @@ import axios from "axios";
 import CloseIcon from "@mui/icons-material/Close";
 import StarIcon from "@mui/icons-material/Star";
 
-function CharactersPage({ domain, setSelectedCharacter }) {
+function CharactersPage({ domain }) {
   const location = useLocation();
   const [characters, setCharacters] = useState([]);
   const [stars, setStars] = useState([]);
@@ -212,7 +212,6 @@ function CharactersPage({ domain, setSelectedCharacter }) {
         <div className="mt-4 grid grid-cols-8 max-2xl:grid-cols-7 max-xl:grid-cols-6 max-lg:grid-cols-5 max-md:grid-cols-4 max-sm:grid-cols-3 max-xs:grid-cols-2 max-mn:grid-cols-1 gap-4">
           {filteredCharacter.map((character) => (
             <Link
-              onClick={() => setSelectedCharacter(character.id)}
               key={character.id}
               to={character.url}
               className={`${
@@ -233,9 +232,16 @@ function CharactersPage({ domain, setSelectedCharacter }) {
                   alt={character.element_name}
                 />
               </figure>
+              <figure className="bg-[#1c1d21] bg-opacity-75 absolute top-0 left-10 m-1 p-1 rounded-full">
+                <img
+                  className="w-[30px] h-[30px]"
+                  src={`/images/paths/${character.path_image}`}
+                  alt={character.path_name}
+                />
+              </figure>
               <p
                 style={{ textShadow: "1px 3px 3px #000" }}
-                className="absolute bottom-2 w-full text-center capitalize text-[18px]"
+                className="absolute bottom-2 w-full text-center capitalize leading-5 text-[18px] max-md:text-[16px] max-xs:text-sm"
               >
                 {character.name}
               </p>
