@@ -31,7 +31,10 @@ const star_routes = require("./routes/star_routes");
 const element_routes = require("./routes/element_routes");
 const path_routes = require("./routes/path_routes");
 const basic_routes = require("./routes/basic_routes");
-const basic_level_routes = require("./routes/basic_level_routes");
+const skill_routes = require("./routes/skill_routes");
+const ultimate_routes = require("./routes/ultimate_routes");
+const talent_routes = require("./routes/talent_routes");
+const technique_routes = require("./routes/technique_routes");
 
 // Use routes
 app.use(user_routes);
@@ -42,6 +45,9 @@ app.use(star_routes);
 app.use(element_routes);
 app.use(path_routes);
 app.use(basic_routes);
-app.use(basic_level_routes);
+app.use(skill_routes);
+app.use(ultimate_routes);
+app.use(talent_routes);
+app.use(technique_routes);
 
 app.listen(3000, () => console.log("Server is running on port 3000"));

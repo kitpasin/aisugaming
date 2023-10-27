@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Sidebar from "./components/layouts/Sidebar";
 import Header from "./components/layouts/Header";
-import HomePage from "./components/pages/HomePage";
-import TierListPage from "./components/pages/TierlistPage";
+import HomePage from "./components/pages/home/HomePage";
+import TierListPage from "./components/pages/tierlist/TierListPage";
 import { Route, Routes } from "react-router-dom";
-import CharactersPage from "./components/pages/CharactersPage";
-import CharacterDetailPage from "./components/pages/CharacterDetailPage";
+import CharactersPage from "./components/pages/characters/CharactersPage";
+import CharacterDetailPage from "./components/pages/character_detail/CharacterDetailPage";
 
 function Index({ games, domain, bgImg }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth || 0);

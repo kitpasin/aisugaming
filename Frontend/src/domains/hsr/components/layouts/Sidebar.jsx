@@ -64,15 +64,13 @@ function Sidebar({ isSidebarOpen, games, domain, bgImg }) {
         </div>
       </figure>
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
         open={isGamesModalOpen}
         onClose={handleGamesModalClose}
         closeAfterTransition
         slots={{ backdrop: Backdrop }}
         slotProps={{
           backdrop: {
-            timeout: 500,
+            timeout: 300,
           },
         }}
       >

@@ -28,8 +28,8 @@ function App() {
   return (
     <>
       {loading ? (
-        <div className="fixed w-full h-screen">
-          <PulseLoader color="#161616" />
+        <div className="bg-[#1c1d21] fixed w-full h-screen flex justify-center items-center">
+          <PulseLoader color="#fff" />
         </div>
       ) : (
         <div className="relative w-full h-screen bg-[#1c1d21] z-0 overflow-hidden">
